@@ -1,0 +1,37 @@
+# Node.js / npm
+/node_modules
+/npm-debug.log
+/yarn.lock
+
+# React Native / Expo
+/.expo
+/.expo-shared
+/.vscode
+/.idea
+
+# Pliki konfiguracyjne i dane prywatne
+/.env
+/.env.local
+
+# Baza danych (jeśli używasz lokalnej bazy PostgreSQL i eksportujesz dane)
+/*.sql
+/db_backup
+
+# Podczas buildowania
+/dist
+/build
+
+# Systemowe pliki cache / tymczasowe
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logi i cache
+/*.log
+/.cache
+
+# Inne IDE i edytory
+/.vscode/
+/.idea/
+*.sublime-workspace
+*.sublime-project
