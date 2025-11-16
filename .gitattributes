@@ -1,0 +1,11 @@
+# Ustawienie końcówek linii na LF niezależnie od systemu
+* text=auto
+
+# Specjalne traktowanie plików JSON i JS
+*.json text
+*.js text
+*.ts text
+
+# Ignoruj końcówki linii w plikach binarnych
+*.png binary
+*.jpg binary
