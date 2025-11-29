@@ -1,11 +1,45 @@
-require('dotenv').config();
-console.log('Database URL:', process.env.DATABASE_URL);
+require('dotenv').config({});
 
+
+console.log('PG_USER:', process.env.PG_USER);
+console.log('PG_PASSWORD:', process.env.PG_PASSWORD);
+console.log('PG_HOST:', process.env.PG_HOST);
+console.log('PG_PORT:', process.env.PG_PORT);
+console.log('PG_DATABASE:', process.env.PG_DATABASE);
+
+const { Pool } = require('pg');
+
+
+const pool = new Pool({
+  user: process.env.USER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+  port: process.env.PORT,
+});
+
+
+pool.connect()
+  .then(() => console.log('Connected to the database'))
+  .catch((err) => console.error('Database connection error', err));
+
+
+module.exports = pool; 
+
+pool.query('SELECT NOW()', (err, res) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log('Server time:', res.rows[0].now);
+  }
+});
+
+/* 
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
-const { Pool } = require('pg');
+
 
 const app = express();
 app.use(cors());
@@ -13,13 +47,12 @@ app.use(express.json());
 const port = process.env.PORT || 3000;
 
 
-
+const databaseUrl = process.env.DATABASE_URL;
+console.log('Database URL:', databaseUrl);
 
 
 //data base config
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+
 
 pool.connect()
   .then(() => console.log('Connected to the database'))
@@ -97,3 +130,4 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
   res.send('Hello World!');
 } );
+*/
